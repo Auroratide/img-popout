@@ -28,4 +28,20 @@
 
 #cover.show {
     display: block;
+    animation: img-popout_fade-in 128ms linear forwards;
+}
+
+#cover.hide {
+    display: block;
+    animation: img-popout_fade-out 128ms linear forwards;
+}
+
+@keyframes img-popout_fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes img-popout_fade-out {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
 }
