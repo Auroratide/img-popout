@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "examples": "npm run start -w examples",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run test -w examples"
   },
   "author": "Timothy Foster",
   "license": "ISC"

@@ -5,9 +5,8 @@ const {
     openBrowser,
     closeBrowser,
     goto,
-    text,
+    image,
     setConfig,
-    waitFor,
 } = require('taiko')
 
 const assert = require('assert').strict
@@ -30,7 +29,7 @@ describe('test', function() {
 
     it('works', async () => {
         await goto(url)
-        assert.ok(await text('Hello World').exists(), 'Expected to see text but couldn\'t find it')
+        assert.ok(await image('Fruit').isVisible(), 'Could not find Fruit image')
     })
 
     after(async () => {
