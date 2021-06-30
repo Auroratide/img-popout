@@ -1,0 +1,1 @@
+require('@auroratide/img-popout')

@@ -1,0 +1,26 @@
+{
+    "name": "@img-popout/examples",
+    "version": "0.1.0",
+    "private": true,
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "prestart": "npm run build",
+        "start": "micro",
+        "build": "browserify src/index.js > public/bundle.js",
+        "test": "mocha test.js"
+    },
+    "author": "Timothy Foster",
+    "license": "ISC",
+    "dependencies": {
+        "@auroratide/img-popout": "^0.1.0"
+    },
+    "devDependencies": {
+        "browserify": "^17.0.0",
+        "micro": "^9.3.4",
+        "mocha": "^9.0.1",
+        "sirv": "^1.0.12",
+        "taiko": "^1.2.5",
+        "test-listen": "^1.1.0"
+    }
+}

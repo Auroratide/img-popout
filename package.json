@@ -1,0 +1,16 @@
+{
+  "name": "img-popout",
+  "version": "0.1.0",
+  "private": true,
+  "description": "",
+  "workspaces": [
+    "examples",
+    "lib"
+  ],
+  "scripts": {
+    "examples": "npm run start -w examples",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Timothy Foster",
+  "license": "ISC"
+}
