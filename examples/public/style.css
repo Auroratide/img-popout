@@ -1,0 +1,12 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+main {
+    max-width: 75rem;
+    margin: auto;
+}
+
+img-popout img {
+    width: 100%;
+}
