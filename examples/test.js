@@ -12,7 +12,7 @@ const {
 
 const assert = require('assert').strict
 
-describe('test', function() {
+describe('tests', function() {
     this.timeout(10000)
     let server
     let url
@@ -28,7 +28,7 @@ describe('test', function() {
         await openBrowser()
     })
 
-    it('works', async () => {
+    it('standard usage', async () => {
         await goto(url)
 
         assert.ok(await image('Fruit').isVisible(), 'Could not find Fruit image')
@@ -39,6 +39,19 @@ describe('test', function() {
 
         await click(image('Fruit (enlarged)'))
         assert.ok(!(await image('Fruit (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
+    })
+
+    it('different images', async () => {
+        await goto(url)
+
+        assert.ok(await image('Fruit Small').isVisible(), 'Could not find Fruit image')
+        assert.ok(!(await image('Fruit Small (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
+
+        await click(image('Fruit Small'))
+        assert.ok(await image('Fruit Small (enlarged)').isVisible(), 'Could not find Enlarged Fruit image')
+
+        await click(image('Fruit Small (enlarged)'))
+        assert.ok(!(await image('Fruit Small (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
     })
 
     after(async () => {

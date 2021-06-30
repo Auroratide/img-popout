@@ -15,9 +15,15 @@
         </header>
         <main>
             <artcle class="examples">
-                <code-demo title="Standard Usage" code="<img-popout>\n\t<img src=&quot;assets/fruit.png&quot; alt=&quot;Fruit&quot; />\n</img-popout>">
+                <code-demo title="Standard Usage">
                     <img-popout>
                         <img src="assets/fruit.png" alt="Fruit" />
+                    </img-popout>
+                </code-demo>
+                <code-demo title="Different Images">
+                    <img-popout>
+                        <img src="assets/fruit-small.png" alt="Fruit Small" />
+                        <img slot="popped-out" src="assets/fruit.png" alt="Fruit Small (enlarged)" />
                     </img-popout>
                 </code-demo>
             </artcle>
