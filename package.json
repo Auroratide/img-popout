@@ -8,6 +8,8 @@
     "lib"
   ],
   "scripts": {
+    "build": "npm run build -w lib",
+    "preexamples": "npm run build",
     "examples": "npm run start -w examples",
     "test": "npm run test -w examples"
   },
