@@ -40,4 +40,5 @@ There's good reason to do this. Perhaps you want a small version to show the use
 At the moment, there's one variable available to customize:
 
 | Variable | Description | Default |
+| -------- | ----------- | ------- |
 | `--img-popout_bg` | Background for the image when it pops out | `rgba(0, 0, 0, 0.8)` |
