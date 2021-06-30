@@ -8,6 +8,7 @@ const {
     image,
     setConfig,
     click,
+    press,
 } = require('taiko')
 
 const assert = require('assert').strict
@@ -52,6 +53,19 @@ describe('tests', function() {
 
         await click(image('Fruit Small (enlarged)'))
         assert.ok(!(await image('Fruit Small (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
+    })
+
+    it('keyboard usage', async () => {
+        await goto(url)
+
+        assert.ok(await image('Fruit').isVisible(), 'Could not find Fruit image')
+        assert.ok(!(await image('Fruit (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
+
+        await click(image('Fruit'))
+        assert.ok(await image('Fruit (enlarged)').isVisible(), 'Could not find Enlarged Fruit image')
+
+        await press('Escape')
+        assert.ok(!(await image('Fruit (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
     })
 
     after(async () => {
