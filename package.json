@@ -11,6 +11,7 @@
     "build": "npm run build -w lib",
     "preexamples": "npm run build",
     "examples": "npm run start -w examples",
+    "pretest": "npm run build",
     "test": "npm run test -w examples"
   },
   "author": "Timothy Foster",

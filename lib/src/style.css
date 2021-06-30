@@ -1,3 +1,31 @@
-.cover {
+#image {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#cover {
     display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+    z-index: 999;
+    -webkit-tap-highlight-color: tranparent;
+}
+
+#cover ::slotted(*) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+}
+
+#cover.show {
+    display: block;
 }
