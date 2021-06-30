@@ -12,7 +12,7 @@ const css = `
     :host {
         display: block;
     }
-    
+
     * {
         margin: 0;
     }
@@ -36,6 +36,7 @@ const css = `
     
     pre {
         grid-area: code;
+        overflow: auto;
     }
 
     code {
@@ -55,6 +56,13 @@ const css = `
         background-size: 3em 3em;
         border-radius: 0;
     }
+
+    .hljs-name,
+    .hljs-selector-class { color: #0080aa; }
+    .hljs-attr { color: #0060ff; }
+    .hljs-string { color: #a31515; }
+    .hljs-built_in { font-weight: bold; }
+    .hljs-number { color: #a85f30; }
 
     @media screen and (min-width: 75rem) {
         section {
