@@ -2,7 +2,7 @@
     "name": "@img-popout/examples",
     "version": "0.1.0",
     "private": true,
-    "description": "",
+    "description": "Examples showcasing the img-popout component.",
     "main": "server.js",
     "scripts": {
         "prestart": "npm run build",
@@ -10,7 +10,14 @@
         "build": "browserify src/index.js > public/bundle.js",
         "test": "mocha test.js"
     },
-    "author": "Timothy Foster",
+    "author": {
+        "name": "Timothy Foster",
+        "url": "https://auroratide.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Auroratide/img-popout"
+    },
     "license": "ISC",
     "dependencies": {
         "@auroratide/img-popout": "^0.1.0",

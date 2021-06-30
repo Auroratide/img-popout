@@ -2,7 +2,7 @@
   "name": "img-popout",
   "version": "0.1.0",
   "private": true,
-  "description": "",
+  "description": "Component for viewing images in more detail.",
   "workspaces": [
     "examples",
     "lib"
@@ -14,6 +14,13 @@
     "pretest": "npm run build",
     "test": "npm run test -w examples"
   },
-  "author": "Timothy Foster",
+  "author": {
+    "name": "Timothy Foster",
+    "url": "https://auroratide.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Auroratide/img-popout"
+  },
   "license": "ISC"
 }
