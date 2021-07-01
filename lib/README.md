@@ -10,13 +10,21 @@
 
 ## Installation
 
+### CDN
+
+```html
+<script defer src="https://unpkg.com/@auroratide/img-popout@0/dist/index.js"></script>
+```
+
+### NPM
+
 ```
 npm install @auroratide/img-popout
 ```
 
 And in your unbundled code, make sure to import the following:
 
-```
+```js
 import '@auroratide/img-popout'
 ```
 
