@@ -12,3 +12,9 @@ document.querySelector('#replacing-the-image button').onclick = () => {
         document.querySelector('#replacing-the-image img-popout').append(newImage)
     }
 }
+
+document.querySelector('#changing-the-image button').onclick = () => {
+    const toChange = document.querySelector('#changing-the-image img:first-child')
+    toChange.src = 'assets/fruit.png'
+    toChange.alt = 'Changed'
+}

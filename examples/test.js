@@ -104,6 +104,16 @@ describe('tests', function() {
             assert.ok(await image('Replaced (enlarged)').isVisible(), 'Could not find Replaced Changed image')
         })
 
+        it('changing the image', async () => {
+            assert.ok(await image('Unchanged').isVisible(), 'Could not find Unchanged image')
+
+            await click('Change Image')
+            assert.ok(await image('Changed').isVisible(), 'Could not find Changed image')
+
+            await click(image('Changed'))
+            assert.ok(await image('Changed (enlarged)').isVisible(), `Could not find Enlarged Changed image`)
+        })
+
         it('multiple images', async () => {
             await click(image('Multiple Large'))
             assert.ok(await image('Multiple Large (enlarged)').isVisible(), 'Could not find Enlarged Multiple Large image')
