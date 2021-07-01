@@ -12,7 +12,8 @@
     "preexamples": "npm run build",
     "examples": "npm run start -w examples",
     "pretest": "npm run build",
-    "test": "npm run test -w examples"
+    "test": "npm run test -w examples",
+    "gh": "gh-pages -d examples/public"
   },
   "author": {
     "name": "Timothy Foster",
@@ -22,5 +23,8 @@
     "type": "git",
     "url": "https://github.com/Auroratide/img-popout"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "gh-pages": "^3.2.3"
+  }
 }
