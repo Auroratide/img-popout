@@ -1,8 +1,13 @@
 {
     "name": "@auroratide/img-popout",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "Component for viewing images in more detail.",
-    "keywords": ["image", "zoom", "img", "web-component"],
+    "keywords": [
+        "image",
+        "zoom",
+        "img",
+        "web-component"
+    ],
     "main": "dist/index.js",
     "scripts": {
         "build": "rollup -c"
