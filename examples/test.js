@@ -89,18 +89,18 @@ describe('tests', function() {
             assert.ok(await image(`${alt} (enlarged)`).isVisible(), `Could not find Enlarged ${alt} image`)
         })
 
-        it('changing the image', async () => {
+        it('replacing the image', async () => {
             await goto(endpoint('/edge-cases'))
 
             await click(image('Original'))
             assert.ok(await image('Original (enlarged)').isVisible(), `Could not find Enlarged Original image`)
             await click(image('Original (enlarged)'))
 
-            await click('Change Image')
-            assert.ok(await image('Changed').isVisible(), 'Could not find Changed image')
+            await click('Replace Image')
+            assert.ok(await image('Replaced').isVisible(), 'Could not find Replaced image')
 
-            await click(image('Changed'))
-            assert.ok(await image('Changed (enlarged)').isVisible(), 'Could not find Enlarged Changed image')
+            await click(image('Replaced'))
+            assert.ok(await image('Replaced (enlarged)').isVisible(), 'Could not find Replaced Changed image')
         })
     })
 
