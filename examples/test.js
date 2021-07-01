@@ -20,6 +20,7 @@ describe('tests', function() {
     this.timeout(10000)
     let server
     let url
+    const endpoint = (e) => url + e
 
     before(async () => {
         setConfig({
@@ -75,15 +76,10 @@ describe('tests', function() {
     })
 
     describe('edge cases', () => {
-        beforeEach(() => {
-            url = url + '/edge-cases'
-        })
-
         it('originally empty', async () => {
-            await goto(url)
+            await goto(endpoint('/edge-cases'))
             const alt = 'Originally Empty'
 
-            // gets updated to have an image later
             await click('Add Image')
 
             assert.ok(await image(alt).isVisible(), `Could not find ${alt} image`)
@@ -91,6 +87,20 @@ describe('tests', function() {
 
             await click(image(alt))
             assert.ok(await image(`${alt} (enlarged)`).isVisible(), `Could not find Enlarged ${alt} image`)
+        })
+
+        it('changing the image', async () => {
+            await goto(endpoint('/edge-cases'))
+
+            await click(image('Original'))
+            assert.ok(await image('Original (enlarged)').isVisible(), `Could not find Enlarged Original image`)
+            await click(image('Original (enlarged)'))
+
+            await click('Change Image')
+            assert.ok(await image('Changed').isVisible(), 'Could not find Changed image')
+
+            await click(image('Changed'))
+            assert.ok(await image('Changed (enlarged)').isVisible(), 'Could not find Enlarged Changed image')
         })
     })
 
