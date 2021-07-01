@@ -7,7 +7,7 @@
     "scripts": {
         "prestart": "npm run build",
         "start": "micro",
-        "build": "browserify src/index.js > public/bundle.js",
+        "build": "browserify src/index.js > public/bundle.js && browserify src/edge-cases.js > public/edge-cases.js",
         "test": "mocha test.js"
     },
     "author": {

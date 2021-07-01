@@ -84,7 +84,7 @@ describe('tests', function() {
             const alt = 'Originally Empty'
 
             // gets updated to have an image later
-            await evaluate($('#originally-empty'), (elem) => elem.innerHTML = `<img src="assets/fruit.png" alt="Originally Empty" />`)
+            await click('Add Image')
 
             assert.ok(await image(alt).isVisible(), `Could not find ${alt} image`)
             assert.ok(!(await image(`${alt} (enlarged)`).isVisible()), `Enlarged ${alt} image should not be visible`)

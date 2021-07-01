@@ -44,3 +44,25 @@ img-popout img {
     text-align: center;
     font-size: 0.85em;
 }
+
+button, ::part(button) {
+    font-family: var(--font);
+    font-size: 0.75em;
+    border-radius: 0.25em;
+    border: none;
+    padding: 0.625em 1.125em;
+    color: var(--color-fg);
+    text-transform: uppercase;
+    letter-spacing: 0.0625em;
+    box-shadow: 0 0.25em 0.25em -0.125em rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    background: rgb(var(--color-primary));
+}
+
+button:hover, ::part(button):hover {
+    box-shadow: 0 0.25em 0.25em -0.125em rgba(0, 0, 0, 0.25), 0 0 0 3em rgba(0, 0, 0, 0.2) inset;
+}
+
+button:active, ::part(button):active {
+    box-shadow: 0 0 0 3em rgba(0, 0, 0, 0.3) inset;
+}

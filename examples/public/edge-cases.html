@@ -4,12 +4,32 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-        <title>img-popout edge cases</title>
+        <title>img-popout Edge Cases</title>
         <link rel="icon" href="data:," />
 
+        <link href="style.css" rel="stylesheet" />
         <script defer src="bundle.js"></script>
+        <script defer src="edge-cases.js"></script>
     </head>
     <body>
+        <header class="page-header">
+            <h1>img-popout Edge Cases</h1>
+        </header>
+        <main>
+            <artcle class="examples">
+                <code-demo title="Originally Empty" id="originally-empty">
+                    <img-popout></img-popout>
+                    <div slot="additional">
+                        <p>Click the button below to add an image.</p>
+                        <button>Add Image</button>
+                    </div>
+                </code-demo>
+            </artcle>
+        </main>
+        <footer class="page-footer">
+            <p>Made by <a href="https://auroratide.com">Timothy Foster</a></p>
+            <p>Photo by <a href="https://unsplash.com/@bryamb?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Bryam Blanco</a> on <a href="https://unsplash.com/s/photos/fruit-basket?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
+        </footer>
         <img-popout id="originally-empty"></img-popout>
     </body>
 </html>

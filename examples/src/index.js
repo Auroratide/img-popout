@@ -5,6 +5,7 @@ const html = `
         <h2 id="title"></h2>
         <div id="content"><slot></slot></div>
         <pre><code id="code"></code></pre>
+        <aside id="additional"><slot name="additional"></slot></aside>
     </section>
 `
 
@@ -22,7 +23,8 @@ const css = `
         grid-template-areas:
             "title"
             "content"
-            "code";
+            "code"
+            "additional";
         grid-gap: 1em;
     }
 
@@ -37,6 +39,10 @@ const css = `
     pre {
         grid-area: code;
         overflow: auto;
+    }
+
+    #additional {
+        grid-area: additional;
     }
 
     code {
@@ -68,8 +74,10 @@ const css = `
         section {
             grid-template-areas:
                 "title title"
-                "content code";
+                "content code"
+                "content additional";
             grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            grid-template-rows: auto auto 1fr;
         }
     }
 `
