@@ -76,8 +76,11 @@ describe('tests', function() {
     })
 
     describe('edge cases', () => {
-        it('originally empty', async () => {
+        beforeEach(async () => {
             await goto(endpoint('/edge-cases'))
+        })
+
+        it('originally empty', async () => {
             const alt = 'Originally Empty'
 
             await click('Add Image')
@@ -90,8 +93,6 @@ describe('tests', function() {
         })
 
         it('replacing the image', async () => {
-            await goto(endpoint('/edge-cases'))
-
             await click(image('Original'))
             assert.ok(await image('Original (enlarged)').isVisible(), `Could not find Enlarged Original image`)
             await click(image('Original (enlarged)'))
@@ -101,6 +102,17 @@ describe('tests', function() {
 
             await click(image('Replaced'))
             assert.ok(await image('Replaced (enlarged)').isVisible(), 'Could not find Replaced Changed image')
+        })
+
+        it('multiple images', async () => {
+            await click(image('Multiple Large'))
+            assert.ok(await image('Multiple Large (enlarged)').isVisible(), 'Could not find Enlarged Multiple Large image')
+
+            await click(image('Multiple Large (enlarged)'))
+            await waitFor(async () => !(await image('Multiple Large (enlarged)').isVisible()))
+
+            await click(image('Multiple Small'))
+            assert.ok(await image('Multiple Large (enlarged)').isVisible(), 'Could not find Enlarged Multiple Large image')
         })
     })
 
