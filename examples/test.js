@@ -10,6 +10,8 @@ const {
     click,
     press,
     waitFor,
+    $,
+    evaluate,
 } = require('taiko')
 
 const assert = require('assert').strict
@@ -70,6 +72,26 @@ describe('tests', function() {
         await press('Escape')
         await waitFor(async () => !(await image('Fruit (enlarged)').isVisible()))
         assert.ok(!(await image('Fruit (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
+    })
+
+    describe('edge cases', () => {
+        beforeEach(() => {
+            url = url + '/edge-cases'
+        })
+
+        it('originally empty', async () => {
+            await goto(url)
+            const alt = 'Originally Empty'
+
+            // gets updated to have an image later
+            await evaluate($('#originally-empty'), (elem) => elem.innerHTML = `<img src="assets/fruit.png" alt="Originally Empty" />`)
+
+            assert.ok(await image(alt).isVisible(), `Could not find ${alt} image`)
+            assert.ok(!(await image(`${alt} (enlarged)`).isVisible()), `Enlarged ${alt} image should not be visible`)
+
+            await click(image(alt))
+            assert.ok(await image(`${alt} (enlarged)`).isVisible(), `Could not find Enlarged ${alt} image`)
+        })
     })
 
     after(async () => {
