@@ -12,7 +12,7 @@
     "preexamples": "npm run build",
     "examples": "npm run start -w examples",
     "pretest": "npm run build",
-    "test": "npm run test -w examples",
+    "test": "npm test --workspaces",
     "gh": "gh-pages -d examples/public"
   },
   "author": {
