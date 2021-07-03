@@ -38,6 +38,26 @@
                         <img src="assets/fruit.png" alt="Fruit" />
                     </img-popout>
                 </code-demo>
+                <code-demo title="Custom Transitions">
+                    <script>
+                        window.addEventListener('DOMContentLoaded', () => {
+                            const list = document.getElementsByClassName('fade-transition')
+                            for(let elem of list) {
+                                elem.transition.in = (cover, img, main) => ({
+                                    duration: 1000,
+                                    tick: (t) => {
+                                        console.log(t)
+                                        cover.style.opacity = t.toString()
+                                    }
+                                })
+                            }
+                        })
+                    </script>
+
+                    <img-popout class="fade-transition">
+                        <img src="assets/fruit.png" alt="Custom Transitions" />
+                    </img-popout>
+                </code-demo>
             </artcle>
         </main>
         <footer class="page-footer">

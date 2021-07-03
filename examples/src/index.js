@@ -65,7 +65,8 @@ const css = `
 
     .hljs-name,
     .hljs-selector-class { color: #0080aa; }
-    .hljs-attr { color: #0060ff; }
+    .hljs-attr,
+    .hljs-keyword { color: #0060ff; }
     .hljs-string { color: #a31515; }
     .hljs-built_in { font-weight: bold; }
     .hljs-number { color: #a85f30; }

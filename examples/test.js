@@ -75,6 +75,19 @@ describe('tests', function() {
         assert.ok(!(await image('Fruit (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
     })
 
+    it('custom transitions', async () => {
+        await goto(url)
+
+        await click(image('Custom Transitions'))
+        assert.ok(await image('Custom Transitions (enlarged)').isVisible(), 'Could not find Enlarged Custom Transitions image')
+        
+        await click(image('Custom Transitions (enlarged)'))
+        assert.ok(await image('Custom Transitions (enlarged)').isVisible(), 'Enlarged Custom Transitions image should be fading out, but is gone')
+
+        await waitFor(async () => !(await image('Custom Transitions (enlarged)').isVisible()))
+        assert.ok(!(await image('Custom Transitions (enlarged)').isVisible()), 'Enlarged Custom Transitions image should not be visible')
+    })
+
     describe('edge cases', () => {
         beforeEach(async () => {
             await goto(endpoint('/edge-cases'))
