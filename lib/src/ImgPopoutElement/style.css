@@ -18,30 +18,18 @@
 
 #cover ::slotted(*) {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 90vw;
-    max-height: 90vh;
     object-fit: contain;
 }
 
 #cover.show {
     display: block;
-    animation: img-popout_fade-in 128ms linear forwards;
 }
 
-#cover.hide {
+#cover.animating {
     display: block;
-    animation: img-popout_fade-out 128ms linear forwards;
+    pointer-events: none;
 }
 
-@keyframes img-popout_fade-in {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-}
-
-@keyframes img-popout_fade-out {
-    0% { opacity: 1; }
-    100% { opacity: 0; }
+#cover.show.animating {
+    pointer-events: auto;
 }
