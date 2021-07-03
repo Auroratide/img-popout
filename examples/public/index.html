@@ -58,6 +58,28 @@
                         <img src="assets/fruit.png" alt="Custom Transitions" />
                     </img-popout>
                 </code-demo>
+                <code-demo title="Different Transition Out">
+                    <script>
+                        window.addEventListener('DOMContentLoaded', () => {
+                            const list = document.getElementsByClassName('spin-out')
+                            for(let elem of list) {
+                                elem.transition.out = (cover, img, main) => ({
+                                    duration: 400,
+                                    tick: (t) => {
+                                        cover.style.opacity = (1 - t).toString()
+
+                                        img.style.transformOrigin = '0 0'
+                                        img.style.transform = `rotate(${t * 360}deg) translate(-50%, -50%)`
+                                    }
+                                })
+                            }
+                        })
+                    </script>
+
+                    <img-popout class="spin-out">
+                        <img src="assets/fruit.png" alt="Different Transition Out" />
+                    </img-popout>
+                </code-demo>
             </artcle>
         </main>
         <footer class="page-footer">
