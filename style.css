@@ -63,6 +63,11 @@ button:hover, ::part(button):hover {
     box-shadow: 0 0.25em 0.25em -0.125em rgba(0, 0, 0, 0.25), 0 0 0 3em rgba(0, 0, 0, 0.2) inset;
 }
 
-button:active, ::part(button):active {
+button:active, ::part(button):active, button[disabled] {
     box-shadow: 0 0 0 3em rgba(0, 0, 0, 0.3) inset;
+}
+
+button[disabled] {
+    pointer-events: none;
+    opacity: 0.5;
 }
