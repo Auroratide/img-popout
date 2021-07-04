@@ -79,6 +79,30 @@
             <img src="assets/fruit.png" alt="Different Transition Out" />
           </img-popout>
         </code-demo>
+        <code-demo title="Custom Default Transitions">
+          <img-popout>
+            <img src="assets/fruit.png" alt="Custom Default Transitions" />
+          </img-popout>
+          <div slot="additional">
+            <p>Click the buttons below to change the default transitions on all elements.</p>
+            <button id="use-spin">Use Spin</button>
+            <button id="use-popout">Use Popout</button>
+          </div>
+
+          <script>
+            document.getElementById('use-spin').onclick = () => {
+              ImgPopoutElement.defaultTransitions.in = (cover, img, main) => ({
+                duration: 500,
+                easing: (t) => 1 - (1 - t) * (1 - t),
+                tick: (t) => {
+                  cover.style.opacity = t.toString()
+                  img.style.transformOrigin = '0 0'
+                  img.style.transform = `rotate(${t * 360}deg) translate(-50%, -50%)`
+                }
+              })
+            }
+          </script>
+        </code-demo>
       </artcle>
     </main>
     <footer class="page-footer">
