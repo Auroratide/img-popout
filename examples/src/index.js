@@ -5,10 +5,10 @@ const popout = window.ImgPopoutElement.defaultTransitions.in
 const setActivated = (selector, name) => {
     const elems = document.querySelectorAll(selector)
     for (let elem of elems) {
-        elem.classList.remove('activated')
+        elem.removeAttribute('disabled')
     }
 
-    document.getElementById(name).classList.add('activated')
+    document.getElementById(name).disabled = true
 }
 
 document.querySelector('#use-spin').onclick = () => {
