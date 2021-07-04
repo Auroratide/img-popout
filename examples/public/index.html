@@ -1,89 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-        <title>img-popout Examples</title>
-        <link rel="icon" href="data:," />
+    <title>img-popout Examples</title>
+    <link rel="icon" href="data:," />
 
-        <link href="style.css" rel="stylesheet" />
-        <script defer src="bundle.js"></script>
-    </head>
-    <body>
-        <header class="page-header">
-            <h1>img-popout Examples</h1>
-        </header>
-        <main>
-            <artcle class="examples">
-                <code-demo title="Standard Usage">
-                    <img-popout>
-                        <img src="assets/fruit.png" alt="Fruit" />
-                    </img-popout>
-                </code-demo>
-                <code-demo title="Different Images">
-                    <img-popout>
-                        <img src="assets/fruit-small.png" alt="Fruit Small" />
-                        <img slot="popped-out" src="assets/fruit.png" alt="Fruit Small (enlarged)" />
-                    </img-popout>
-                </code-demo>
-                <code-demo title="Custom Background Color">
-                    <style>
-                        .custom-colors {
-                            --img-popout_bg: rgba(252, 198, 226, 0.8);
-                        }
-                    </style>
+    <link href="style.css" rel="stylesheet" />
+    <script defer src="bundle.js"></script>
+  </head>
+  <body>
+    <header class="page-header">
+      <h1>img-popout Examples</h1>
+    </header>
+    <main>
+      <artcle class="examples">
+        <code-demo title="Standard Usage">
+          <img-popout>
+            <img src="assets/fruit.png" alt="Fruit" />
+          </img-popout>
+        </code-demo>
+        <code-demo title="Different Images">
+          <img-popout>
+            <img src="assets/fruit-small.png" alt="Fruit Small" />
+            <img slot="popped-out" src="assets/fruit.png" alt="Fruit Small (enlarged)" />
+          </img-popout>
+        </code-demo>
+        <code-demo title="Custom Background Color">
+          <style>
+            .custom-colors {
+              --img-popout_bg: rgba(252, 198, 226, 0.8);
+            }
+          </style>
 
-                    <img-popout class="custom-colors">
-                        <img src="assets/fruit.png" alt="Fruit" />
-                    </img-popout>
-                </code-demo>
-                <code-demo title="Custom Transitions">
-                    <script>
-                        window.addEventListener('DOMContentLoaded', () => {
-                            const list = document.getElementsByClassName('fade-transition')
-                            for(let elem of list) {
-                                elem.transition.in = (cover, img, main) => ({
-                                    duration: 1000,
-                                    tick: (t) => {
-                                        cover.style.opacity = t.toString()
-                                    }
-                                })
-                            }
-                        })
-                    </script>
+          <img-popout class="custom-colors">
+            <img src="assets/fruit.png" alt="Fruit" />
+          </img-popout>
+        </code-demo>
+        <code-demo title="Custom Transitions">
+          <script>
+            window.addEventListener('DOMContentLoaded', () => {
+              const list = document.getElementsByClassName('fade-transition')
+              for(let elem of list) {
+                elem.transition.in = (cover, img, main) => ({
+                  duration: 1000,
+                  tick: (t) => {
+                    cover.style.opacity = t.toString()
+                  }
+                })
+              }
+            })
+          </script>
 
-                    <img-popout class="fade-transition">
-                        <img src="assets/fruit.png" alt="Custom Transitions" />
-                    </img-popout>
-                </code-demo>
-                <code-demo title="Different Transition Out">
-                    <script>
-                        window.addEventListener('DOMContentLoaded', () => {
-                            const list = document.getElementsByClassName('spin-out')
-                            for(let elem of list) {
-                                elem.transition.out = (cover, img, main) => ({
-                                    duration: 400,
-                                    tick: (t) => {
-                                        cover.style.opacity = (1 - t).toString()
+          <img-popout class="fade-transition">
+            <img src="assets/fruit.png" alt="Custom Transitions" />
+          </img-popout>
+        </code-demo>
+        <code-demo title="Different Transition Out">
+          <script>
+            window.addEventListener('DOMContentLoaded', () => {
+              const list = document.getElementsByClassName('spin-out')
+              for(let elem of list) {
+                elem.transition.out = (cover, img, main) => ({
+                  duration: 400,
+                  tick: (t) => {
+                    cover.style.opacity = (1 - t).toString()
 
-                                        img.style.transformOrigin = '0 0'
-                                        img.style.transform = `rotate(${t * 360}deg) translate(-50%, -50%)`
-                                    }
-                                })
-                            }
-                        })
-                    </script>
+                    img.style.transformOrigin = '0 0'
+                    img.style.transform = `rotate(${t * 360}deg) translate(-50%, -50%)`
+                  }
+                })
+              }
+            })
+          </script>
 
-                    <img-popout class="spin-out">
-                        <img src="assets/fruit.png" alt="Different Transition Out" />
-                    </img-popout>
-                </code-demo>
-            </artcle>
-        </main>
-        <footer class="page-footer">
-            <p>Made by <a href="https://auroratide.com">Timothy Foster</a></p>
-            <p>Photo by <a href="https://unsplash.com/@bryamb?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Bryam Blanco</a> on <a href="https://unsplash.com/s/photos/fruit-basket?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
-        </footer>
-    </body>
+          <img-popout class="spin-out">
+            <img src="assets/fruit.png" alt="Different Transition Out" />
+          </img-popout>
+        </code-demo>
+      </artcle>
+    </main>
+    <footer class="page-footer">
+      <p>Made by <a href="https://auroratide.com">Timothy Foster</a></p>
+      <p>Photo by <a href="https://unsplash.com/@bryamb?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Bryam Blanco</a> on <a href="https://unsplash.com/s/photos/fruit-basket?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
+    </footer>
+  </body>
 </html>
