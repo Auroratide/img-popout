@@ -43,7 +43,7 @@
             window.addEventListener('DOMContentLoaded', () => {
               const list = document.getElementsByClassName('fade-transition')
               for(let elem of list) {
-                elem.transition.in = (cover, img, main) => ({
+                elem.transition.out = (cover, img, main) => ({
                   duration: 1000,
                   tick: (t) => {
                     cover.style.opacity = t.toString()
@@ -57,12 +57,12 @@
             <img src="assets/fruit.png" alt="Custom Transitions" />
           </img-popout>
         </code-demo>
-        <code-demo title="Different Transition Out">
+        <code-demo title="Different Transition In">
           <script>
             window.addEventListener('DOMContentLoaded', () => {
-              const list = document.getElementsByClassName('spin-out')
+              const list = document.getElementsByClassName('spin-in')
               for(let elem of list) {
-                elem.transition.out = (cover, img, main) => ({
+                elem.transition.in = (cover, img, main) => ({
                   duration: 400,
                   tick: (t) => {
                     cover.style.opacity = (1 - t).toString()
@@ -75,8 +75,8 @@
             })
           </script>
 
-          <img-popout class="spin-out">
-            <img src="assets/fruit.png" alt="Different Transition Out" />
+          <img-popout class="spin-in">
+            <img src="assets/fruit.png" alt="Different Transition In" />
           </img-popout>
         </code-demo>
         <code-demo title="Custom Default Transitions" id="custom-default-transitions">
@@ -91,7 +91,7 @@
 
           <script>
             function useSpin() {
-              ImgPopoutElement.defaultTransitions.in = (cover, img, main) => ({
+              ImgPopoutElement.defaultTransitions.out = (cover, img, main) => ({
                 duration: 500,
                 easing: (t) => 1 - (1 - t) * (1 - t),
                 tick: (t) => {

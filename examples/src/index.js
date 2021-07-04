@@ -1,6 +1,6 @@
 require('./_global')
 
-const popout = window.ImgPopoutElement.defaultTransitions.in
+const popout = window.ImgPopoutElement.defaultTransitions.out
 
 const setActivated = (selector, name) => {
     const elems = document.querySelectorAll(selector)
@@ -18,5 +18,5 @@ document.querySelector('#use-spin').onclick = () => {
 
 document.querySelector('#use-popout').onclick = () => {
     setActivated('#custom-default-transitions button', 'use-popout')
-    ImgPopoutElement.defaultTransitions.in = popout
+    ImgPopoutElement.defaultTransitions.out = popout
 }
