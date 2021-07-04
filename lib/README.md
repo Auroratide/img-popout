@@ -49,35 +49,30 @@ There's good reason to do this. Perhaps you want a small version to show the use
 </img-popout>
 ```
 
-## Customization
-
-You are able to customize the styling and transition animations!
-
-### Styling
+## Styling
 
 | Variable | Description | Default |
 | -------- | ----------- | ------- |
 | `--img-popout_bg` | Background for the image when it pops out | `rgba(0, 0, 0, 0.8)` |
 
-### Transitions
+## Transitions
 
-Every `img-popout` element has a property called `transition` with two parts:
-
-* `out` for when an image is popping out of the page
-* `in` for when an image is popping back into the page
-
-In Javascript, as long as you have access to the element, you can set its transitions.
+You can change the default transitions for _all_ instances of `img-popout` by setting the following:
 
 ```javascript
-element.transition.out = myOutTransition
-element.transition.in = myInTransition
+ImgPopoutElement.defaultTransitions.out = myOutTransition
+ImgPopoutElement.defaultTransitions.in = myInTransition
 ```
+
+`ImgPopoutElement` is defined on `window`.
 
 See the [Live Demo](https://auroratide.github.io/img-popout) for examples on how to set custom transitions.
 
-**NOTE!** If you do not set an `in` transition, by default it will use the reverse of the `out` transition.
+**NOTE!** `out` is by default an in-build popout animation. It must be **non-null** if you decide to override it!
 
-#### Transition Schema
+**ANOTHER NOTE!** If you do not set an `in` transition, by default it will use the reverse of the `out` transition.
+
+### Transition Schema
 
 A transition is a _function_ with the following signature:
 
@@ -94,7 +89,7 @@ type Transition = (cover: HTMLElement, img: HTMLElement, main: HTMLElement) => {
 
 The function returns an object which defines, at minimum, the `duration` of the transition and what happens on each `tick`.
 
-##### cover, img, and main
+#### cover, img, and main
 
 The parameters of the function represent different `HTMLElement`s you can manipulate during the transition.
 
@@ -102,13 +97,13 @@ The parameters of the function represent different `HTMLElement`s you can manipu
 * `img` is the instance of the image that pops out when a user elects to view more details.
 * `main` is the image on the page which the user clicks to initiate the popout
 
-##### duration [required]
+#### duration [required]
 
 **Schema:** `number`
 
 `duration` is how long the transition should last in milliseconds. It is **required**.
 
-##### tick [required]
+#### tick [required]
 
 **Schema:** `(t: number, ctx: object) => void`
 
@@ -129,7 +124,7 @@ const myTransition = (cover, img, main) => ({
 })
 ```
 
-##### easing
+#### easing
 
 **Schema:** `(t: number) => number`
 **Default:** `(t) => t`
@@ -138,36 +133,39 @@ const myTransition = (cover, img, main) => ({
 
 This can be used to create different transition timings, like easing in then out, and so forth. [Easings.net](https://easings.net/) provides a very useful list of different easing models and what functions create them.
 
-##### context
+#### context
 
 **Schema:** `() => object`
 **Default:** `() => ({})`
 
 `context` allows you to create an object that is passed to `tick`, `initialize`, and `finalize`. It can be useful for storing values that you do not want to recalculate on every tick.
 
-##### initialize
+#### initialize
 
 **Schema:** `(ctx: object) => void`
 **Default:** `() => {}`
 
 `initialize` is a function that runs right at the beginning of the transition, before the first `tick`.
 
-##### finalize
+#### finalize
 
 **Schema:** `(ctx: object) => void`
 **Default:** `() => {}`
 
 `finalize` is a function that runs right at the end of the transition, after the last `tick`.
 
-#### Customizing Default Transitions
+### Customizing Individual Transitions
 
-You can change the default transitions for _all_ instances of `img-popout` by setting the following:
+Maybe you want different instances of `img-popout` to have different transition animations. Every `img-popout` element has a property called `transition` with two parts:
+
+* `out` for when an image is popping out of the page
+* `in` for when an image is popping back into the page
+
+In Javascript, as long as you have access to the element, you can set its transitions.
 
 ```javascript
-ImgPopoutElement.defaultTransitions.out = myOutTransition
-ImgPopoutElement.defaultTransitions.in = myInTransition
+element.transition.out = myOutTransition
+element.transition.in = myInTransition
 ```
 
-`ImgPopoutElement` is defined on `window`.
-
-**NOTE!** `out` is by default an in-build popout animation. It must be **non-null** if you decide to override it!
+These will override the `defaultTransitions` for the applied element.
