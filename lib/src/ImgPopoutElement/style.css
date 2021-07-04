@@ -16,7 +16,8 @@
     -webkit-tap-highlight-color: tranparent;
 }
 
-#cover ::slotted(*) {
+#cover ::slotted(*),
+#cover slot > * {
     position: absolute;
     object-fit: contain;
     top: 50%;
