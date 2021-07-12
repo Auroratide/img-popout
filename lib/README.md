@@ -169,3 +169,12 @@ element.transition.in = myInTransition
 ```
 
 These will override the `defaultTransitions` for the applied element.
+
+## Accessibility
+
+`img-popout` is developed with accessibility in mind. Features include:
+
+* Keyboard Operation: When the image receives focus via `Tab`, `Enter` can be used to open/close the enlarged image
+* Tab Trapping: While the image is enlarged, tabbing keeps the focus within the dialog until it is dismissed
+
+Please leave an issue if there are any problems accessing this component by any means!
