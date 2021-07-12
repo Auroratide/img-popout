@@ -78,6 +78,14 @@ describe('tests', function() {
         await press('Escape')
         await waitFor(async () => !(await image('Fruit (enlarged)').isVisible()))
         assert.ok(!(await image('Fruit (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
+
+        // Tabbing is trapped in the dialog
+        await press('Enter')
+        assert.ok(await image('Fruit (enlarged)').isVisible(), 'Could not find Enlarged Fruit image')
+        await press('Tab')
+        await press('Enter')
+        await waitFor(async () => !(await image('Fruit (enlarged)').isVisible()))
+        assert.ok(!(await image('Fruit (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
     })
 
     it('custom transitions', async () => {
