@@ -4,7 +4,6 @@
 }
 
 #cover {
-    display: none;
     position: fixed;
     top: 0;
     right: 0;
@@ -27,15 +26,11 @@
     max-height: 90vh;
 }
 
-#cover.show {
-    display: block;
-}
-
 #cover.animating {
     display: block;
-    pointer-events: none;
+    pointer-events: auto;
 }
 
-#cover.show.animating {
-    pointer-events: auto;
+#cover.animating[hidden] {
+    pointer-events: none;
 }
