@@ -10,8 +10,7 @@ const {
     click,
     press,
     waitFor,
-    $,
-    evaluate,
+    focus,
 } = require('taiko')
 
 const assert = require('assert').strict
@@ -64,12 +63,18 @@ describe('tests', function() {
     it('keyboard usage', async () => {
         await goto(url)
 
-        assert.ok(await image('Fruit').isVisible(), 'Could not find Fruit image')
-        assert.ok(!(await image('Fruit (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
-
-        await click(image('Fruit'))
+        await press('Tab')
+        await press('Enter')
         assert.ok(await image('Fruit (enlarged)').isVisible(), 'Could not find Enlarged Fruit image')
 
+        // Entering again closes the model
+        await press('Enter')
+        await waitFor(async () => !(await image('Fruit (enlarged)').isVisible()))
+        assert.ok(!(await image('Fruit (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
+
+        // Escape also closes the model
+        await press('Enter')
+        assert.ok(await image('Fruit (enlarged)').isVisible(), 'Could not find Enlarged Fruit image')
         await press('Escape')
         await waitFor(async () => !(await image('Fruit (enlarged)').isVisible()))
         assert.ok(!(await image('Fruit (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
