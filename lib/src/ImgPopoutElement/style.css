@@ -1,5 +1,5 @@
 #main {
-    cursor: pointer;
+    cursor: zoom-in;
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -10,7 +10,7 @@
     bottom: 0;
     left: 0;
     background: var(--img-popout_bg, rgba(0, 0, 0, 0.8));
-    cursor: pointer;
+    cursor: zoom-out;
     z-index: 999;
     -webkit-tap-highlight-color: tranparent;
 }
