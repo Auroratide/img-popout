@@ -32,73 +32,71 @@ describe('tests', function() {
         await openBrowser()
     })
 
-    it('standard usage', async () => {
-        await goto(url)
+    describe('standard cases', () => {
+        beforeEach(async () => {
+            await goto(endpoint('/'))
+        })
 
-        assert.ok(await image('Fruit').isVisible(), 'Could not find Fruit image')
-        assert.ok(!(await image('Fruit (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
-
-        await click(image('Fruit'))
-        assert.ok(await image('Fruit (enlarged)').isVisible(), 'Could not find Enlarged Fruit image')
-
-        await click(image('Fruit (enlarged)'))
-        await waitFor(async () => !(await image('Fruit (enlarged)').isVisible()))
-        assert.ok(!(await image('Fruit (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
-    })
-
-    it('different images', async () => {
-        await goto(url)
-
-        assert.ok(await image('Fruit Small').isVisible(), 'Could not find Fruit image')
-        assert.ok(!(await image('Fruit Small (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
-
-        await click(image('Fruit Small'))
-        assert.ok(await image('Fruit Small (enlarged)').isVisible(), 'Could not find Enlarged Fruit image')
-
-        await click(image('Fruit Small (enlarged)'))
-        await waitFor(async () => !(await image('Fruit Small (enlarged)').isVisible()))
-        assert.ok(!(await image('Fruit Small (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
-    })
-
-    it('keyboard usage', async () => {
-        await goto(url)
-
-        await press('Tab')
-        await press('Enter')
-        assert.ok(await image('Fruit (enlarged)').isVisible(), 'Could not find Enlarged Fruit image')
-
-        // Entering again closes the model
-        await press('Enter')
-        await waitFor(async () => !(await image('Fruit (enlarged)').isVisible()))
-        assert.ok(!(await image('Fruit (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
-
-        // Escape also closes the model
-        await press('Enter')
-        assert.ok(await image('Fruit (enlarged)').isVisible(), 'Could not find Enlarged Fruit image')
-        await press('Escape')
-        await waitFor(async () => !(await image('Fruit (enlarged)').isVisible()))
-        assert.ok(!(await image('Fruit (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
-
-        // Tabbing is trapped in the dialog
-        await press('Enter')
-        assert.ok(await image('Fruit (enlarged)').isVisible(), 'Could not find Enlarged Fruit image')
-        await press('Tab')
-        await press('Enter')
-        await waitFor(async () => !(await image('Fruit (enlarged)').isVisible()))
-        assert.ok(!(await image('Fruit (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
-    })
-
-    it('custom transitions', async () => {
-        await goto(url)
-
-        await click(image('Custom Transitions'))
-        assert.ok(await image('Custom Transitions (enlarged)').isVisible(), 'Could not find Enlarged Custom Transitions image')
-        
-        await click(image('Custom Transitions (enlarged)'))
-        assert.ok(await image('Custom Transitions (enlarged)').isVisible(), 'Enlarged Custom Transitions image should be fading out, but is gone')
-
-        await waitFor(async () => !(await image('Custom Transitions (enlarged)').isVisible()))
-        assert.ok(!(await image('Custom Transitions (enlarged)').isVisible()), 'Enlarged Custom Transitions image should not be visible')
+        it('standard usage', async () => {
+            assert.ok(await image('Fruit').isVisible(), 'Could not find Fruit image')
+            assert.ok(!(await image('Fruit (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
+    
+            await click(image('Fruit'))
+            assert.ok(await image('Fruit (enlarged)').isVisible(), 'Could not find Enlarged Fruit image')
+    
+            await click(image('Fruit (enlarged)'))
+            await waitFor(async () => !(await image('Fruit (enlarged)').isVisible()))
+            assert.ok(!(await image('Fruit (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
+        })
+    
+        it('different images', async () => {
+            assert.ok(await image('Fruit Small').isVisible(), 'Could not find Fruit image')
+            assert.ok(!(await image('Fruit Small (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
+    
+            await click(image('Fruit Small'))
+            assert.ok(await image('Fruit Small (enlarged)').isVisible(), 'Could not find Enlarged Fruit image')
+    
+            await click(image('Fruit Small (enlarged)'))
+            await waitFor(async () => !(await image('Fruit Small (enlarged)').isVisible()))
+            assert.ok(!(await image('Fruit Small (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
+        })
+    
+        it('keyboard usage', async () => {
+            await press('Tab')
+            await press('Enter')
+            assert.ok(await image('Fruit (enlarged)').isVisible(), 'Could not find Enlarged Fruit image')
+    
+            // Entering again closes the model
+            await press('Enter')
+            await waitFor(async () => !(await image('Fruit (enlarged)').isVisible()))
+            assert.ok(!(await image('Fruit (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
+    
+            // Escape also closes the model
+            await press('Enter')
+            assert.ok(await image('Fruit (enlarged)').isVisible(), 'Could not find Enlarged Fruit image')
+            await press('Escape')
+            await waitFor(async () => !(await image('Fruit (enlarged)').isVisible()))
+            assert.ok(!(await image('Fruit (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
+    
+            // Tabbing is trapped in the dialog
+            await press('Enter')
+            assert.ok(await image('Fruit (enlarged)').isVisible(), 'Could not find Enlarged Fruit image')
+            await press('Tab')
+            await press('Enter')
+            await waitFor(async () => !(await image('Fruit (enlarged)').isVisible()))
+            assert.ok(!(await image('Fruit (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
+        })
+    
+        it('custom transitions', async () => {
+            await click(image('Custom Transitions'))
+            assert.ok(await image('Custom Transitions (enlarged)').isVisible(), 'Could not find Enlarged Custom Transitions image')
+            
+            await click(image('Custom Transitions (enlarged)'))
+            assert.ok(await image('Custom Transitions (enlarged)').isVisible(), 'Enlarged Custom Transitions image should be fading out, but is gone')
+    
+            await waitFor(async () => !(await image('Custom Transitions (enlarged)').isVisible()))
+            assert.ok(!(await image('Custom Transitions (enlarged)').isVisible()), 'Enlarged Custom Transitions image should not be visible')
+        })
     })
 
     describe('edge cases', () => {
