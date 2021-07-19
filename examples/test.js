@@ -50,15 +50,16 @@ describe('tests', function() {
         })
     
         it('different images', async () => {
-            assert.ok(await image('Fruit Small').isVisible(), 'Could not find Fruit image')
-            assert.ok(!(await image('Fruit Small (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
-    
-            await click(image('Fruit Small'))
-            assert.ok(await image('Fruit Small (enlarged)').isVisible(), 'Could not find Enlarged Fruit image')
-    
-            await click(image('Fruit Small (enlarged)'))
-            await waitFor(async () => !(await image('Fruit Small (enlarged)').isVisible()))
-            assert.ok(!(await image('Fruit Small (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
+            const section = new CustomPoppedOutSection('Different Images', 'other')
+
+            await section.image.assertVisible()
+            await section.cover.assertHidden()
+
+            await section.image.click()
+            await section.cover.assertVisible()
+
+            await section.cover.click()
+            await section.cover.assertHidden()
         })
     
         it('keyboard usage', async () => {
@@ -167,6 +168,17 @@ class Section {
 
     get cover() {
         return new SectionElement(`${this.name} (cover)`, image(`${this.name} (enlarged)`))
+    }
+}
+
+class CustomPoppedOutSection extends Section {
+    constructor(name, poppedOutLabel) {
+        super(name)
+        this.poppedOutLabel = poppedOutLabel
+    }
+
+    get cover() {
+        return new SectionElement(`${this.name} (cover)`, image(`${this.name} (${this.poppedOutLabel})`))
     }
 }
 
