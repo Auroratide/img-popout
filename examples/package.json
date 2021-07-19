@@ -20,7 +20,6 @@
     },
     "license": "ISC",
     "dependencies": {
-        "@auroratide/img-popout": "^0.1.0",
         "highlight.js": "^10.7.3"
     },
     "devDependencies": {
