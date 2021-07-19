@@ -1,6 +1,6 @@
 {
   "name": "img-popout",
-  "version": "0.3.1",
+  "version": "1.0.0",
   "private": true,
   "description": "Component for viewing images in more detail.",
   "workspaces": [
