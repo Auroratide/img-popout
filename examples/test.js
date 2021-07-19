@@ -168,14 +168,21 @@ describe('tests', function() {
         })
 
         it('multiple images', async () => {
-            await click(image('Multiple Large'))
-            assert.ok(await image('Multiple Large (enlarged)').isVisible(), 'Could not find Enlarged Multiple Large image')
+            const section = new (class extends Section {
+                constructor() { super('Multiple Images') }
 
-            await click(image('Multiple Large (enlarged)'))
-            await waitFor(async () => !(await image('Multiple Large (enlarged)').isVisible()))
+                get otherImage() {
+                    return new SectionElement(`${this.name} (other image)`, image(`${this.name} (other)`))
+                }
+            })
 
-            await click(image('Multiple Small'))
-            assert.ok(await image('Multiple Large (enlarged)').isVisible(), 'Could not find Enlarged Multiple Large image')
+            await section.image.click()
+            await section.cover.assertVisible()
+            await section.cover.click()
+            await section.cover.assertHidden()
+
+            await section.otherImage.click()
+            await section.cover.assertVisible()
         })
     })
 
