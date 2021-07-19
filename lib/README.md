@@ -1,6 +1,6 @@
 # img-popout
 
-[![npm package](https://img.shields.io/npm/v/@auroratide/img-popout.svg)](https://www.npmjs.com/package/@auroratide/img-popout)
+[![npm package](https://img.shields.io/npm/v/@auroratide/img-popout.svg)](https://www.npmjs.com/package/@auroratide/img-popout) [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/@auroratide/img-popout)
 
 `img-popout` is a web component for letting users zoom in on a small image to see more details! Clicking on the image gives the user a full-screen view, somewhat modal-style.
 
