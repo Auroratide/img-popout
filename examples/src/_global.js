@@ -102,6 +102,14 @@ class CodeDemoElement extends HTMLElement {
         }).value
     }
 
+    static get observedAttributes() {
+        return ['title'];
+    }
+      
+    attributeChangedCallback() {
+        this.shadowRoot.getElementById('title').textContent = this.title
+    }
+
     get title() { return this.getAttribute('title') }
     set title(value) { this.setAttribute('title', value) }
 

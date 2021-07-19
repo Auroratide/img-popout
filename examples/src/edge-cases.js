@@ -10,8 +10,9 @@ document.querySelector('#replacing-the-image button').onclick = () => {
         document.querySelector('#replacing-the-image img-popout').removeChild(toReplace)
         const newImage = document.createElement('img')
         newImage.src = 'assets/fruit.png'
-        newImage.alt = 'Replaced'
+        newImage.alt = 'Replacing the Image (replaced)'
         document.querySelector('#replacing-the-image img-popout').append(newImage)
+        document.querySelector('#replacing-the-image').title = 'Replacing the Image (replaced)'
     }
 }
 
