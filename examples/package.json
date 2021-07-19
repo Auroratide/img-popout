@@ -5,7 +5,6 @@
     "description": "Examples showcasing the img-popout component.",
     "main": "server.js",
     "scripts": {
-        "prestart": "npm run build",
         "start": "micro",
         "build": "browserify src/index.js > public/index.js && browserify src/edge-cases.js > public/edge-cases.js",
         "test": "mocha test.js",

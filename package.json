@@ -8,7 +8,7 @@
     "lib"
   ],
   "scripts": {
-    "build": "npm run build -w lib",
+    "build": "npm run build --workspaces",
     "preexamples": "npm run build",
     "examples": "npm run start -w examples",
     "pretest": "npm run build",
