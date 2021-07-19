@@ -145,13 +145,26 @@ describe('tests', function() {
         })
 
         it('changing the image', async () => {
-            assert.ok(await image('Unchanged').isVisible(), 'Could not find Unchanged image')
+            let section = new (class extends Section {
+                constructor() { super('Changing the Image') }
 
-            await click('Change Image')
-            assert.ok(await image('Changed').isVisible(), 'Could not find Changed image')
+                async changeImage() {
+                    await click('Change Image')
+                    return new Section('Changing the Image (changed)')
+                }
+            })
 
-            await click(image('Changed'))
-            assert.ok(await image('Changed (enlarged)').isVisible(), `Could not find Enlarged Changed image`)
+            await section.image.click()
+            await section.cover.assertVisible()
+            await section.cover.click()
+            await section.cover.assertHidden()
+
+            section = await section.changeImage()
+
+            await section.image.click()
+            await section.cover.assertVisible()
+            await section.cover.click()
+            await section.cover.assertHidden()
         })
 
         it('multiple images', async () => {

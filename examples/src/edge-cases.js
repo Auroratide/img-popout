@@ -19,5 +19,6 @@ document.querySelector('#replacing-the-image button').onclick = () => {
 document.querySelector('#changing-the-image button').onclick = () => {
     const toChange = document.querySelector('#changing-the-image img:first-child')
     toChange.src = 'assets/fruit.png'
-    toChange.alt = 'Changed'
+    toChange.alt = 'Changing the Image (changed)'
+    document.querySelector('#changing-the-image').title = 'Changing the Image (changed)'
 }
