@@ -10,8 +10,6 @@ const {
     click,
     press,
     waitFor,
-    $,
-    below,
 } = require('taiko')
 
 const assert = require('assert').strict
@@ -66,27 +64,27 @@ describe('tests', function() {
         it('keyboard usage', async () => {
             await press('Tab')
             await press('Enter')
-            assert.ok(await image('Fruit (enlarged)').isVisible(), 'Could not find Enlarged Fruit image')
+            assert.ok(await image('Standard Usage (enlarged)').isVisible(), 'Could not find Enlarged Fruit image')
     
             // Entering again closes the model
             await press('Enter')
-            await waitFor(async () => !(await image('Fruit (enlarged)').isVisible()))
-            assert.ok(!(await image('Fruit (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
+            await waitFor(async () => !(await image('Standard Usage (enlarged)').isVisible()))
+            assert.ok(!(await image('Standard Usage (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
     
             // Escape also closes the model
             await press('Enter')
-            assert.ok(await image('Fruit (enlarged)').isVisible(), 'Could not find Enlarged Fruit image')
+            assert.ok(await image('Standard Usage (enlarged)').isVisible(), 'Could not find Enlarged Fruit image')
             await press('Escape')
-            await waitFor(async () => !(await image('Fruit (enlarged)').isVisible()))
-            assert.ok(!(await image('Fruit (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
+            await waitFor(async () => !(await image('Standard Usage (enlarged)').isVisible()))
+            assert.ok(!(await image('Standard Usage (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
     
             // Tabbing is trapped in the dialog
             await press('Enter')
-            assert.ok(await image('Fruit (enlarged)').isVisible(), 'Could not find Enlarged Fruit image')
+            assert.ok(await image('Standard Usage (enlarged)').isVisible(), 'Could not find Enlarged Fruit image')
             await press('Tab')
             await press('Enter')
-            await waitFor(async () => !(await image('Fruit (enlarged)').isVisible()))
-            assert.ok(!(await image('Fruit (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
+            await waitFor(async () => !(await image('Standard Usage (enlarged)').isVisible()))
+            assert.ok(!(await image('Standard Usage (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
         })
     
         it('custom transitions', async () => {
@@ -164,15 +162,11 @@ class Section {
     }
 
     get image() {
-        return new SectionElement(`${this.name} (image)`, image(below(this.name)))
+        return new SectionElement(`${this.name} (image)`, image(this.name))
     }
 
     get cover() {
-        // Accessing the cover element requires knowing a little about how the page is laid out
-        return new SectionElement(`${this.name} (cover)`, $((name) =>
-            document.querySelector(`code-demo[title="${name}"] img-popout`).shadowRoot.querySelector('#cover'),
-            { args: this.name }
-        ))
+        return new SectionElement(`${this.name} (cover)`, image(`${this.name} (enlarged)`))
     }
 }
 
@@ -194,6 +188,6 @@ class SectionElement {
     }
 
     async click() {
-        await click(this.selector, { force: true })
+        await click(this.selector)
     }
 }
