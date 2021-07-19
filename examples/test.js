@@ -63,29 +63,28 @@ describe('tests', function() {
         })
     
         it('keyboard usage', async () => {
+            const section = new Section('Standard Usage')
+
             await press('Tab')
             await press('Enter')
-            assert.ok(await image('Standard Usage (enlarged)').isVisible(), 'Could not find Enlarged Fruit image')
+            await section.cover.assertVisible()
     
             // Entering again closes the model
             await press('Enter')
-            await waitFor(async () => !(await image('Standard Usage (enlarged)').isVisible()))
-            assert.ok(!(await image('Standard Usage (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
+            await section.cover.assertHidden()
     
             // Escape also closes the model
             await press('Enter')
-            assert.ok(await image('Standard Usage (enlarged)').isVisible(), 'Could not find Enlarged Fruit image')
+            await section.cover.assertVisible()
             await press('Escape')
-            await waitFor(async () => !(await image('Standard Usage (enlarged)').isVisible()))
-            assert.ok(!(await image('Standard Usage (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
+            await section.cover.assertHidden()
     
             // Tabbing is trapped in the dialog
             await press('Enter')
-            assert.ok(await image('Standard Usage (enlarged)').isVisible(), 'Could not find Enlarged Fruit image')
+            await section.cover.assertVisible()
             await press('Tab')
             await press('Enter')
-            await waitFor(async () => !(await image('Standard Usage (enlarged)').isVisible()))
-            assert.ok(!(await image('Standard Usage (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
+            await section.cover.assertHidden()
         })
     
         it('custom transitions', async () => {
