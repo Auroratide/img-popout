@@ -6,7 +6,7 @@
 
 **Live Demo**: https://auroratide.github.io/img-popout
 
-![Demo](demo.gif)
+![Demo](https://github.com/Auroratide/img-popout/blob/master/lib/demo.gif)
 
 ## Installation
 
