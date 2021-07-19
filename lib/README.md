@@ -13,7 +13,7 @@
 ### CDN
 
 ```html
-<script defer src="https://unpkg.com/@auroratide/img-popout@0/dist/index.js"></script>
+<script defer src="https://unpkg.com/@auroratide/img-popout/dist/index.js"></script>
 ```
 
 ### NPM
