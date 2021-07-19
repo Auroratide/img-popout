@@ -106,15 +106,19 @@ describe('tests', function() {
         })
 
         it('originally empty', async () => {
-            const alt = 'Originally Empty'
+            const section = new (class extends Section {
+                constructor() { super('Originally Empty') }
 
-            await click('Add Image')
+                async addImage() { await click('Add Image') }
+            })
 
-            assert.ok(await image(alt).isVisible(), `Could not find ${alt} image`)
-            assert.ok(!(await image(`${alt} (enlarged)`).isVisible()), `Enlarged ${alt} image should not be visible`)
+            await section.addImage()
 
-            await click(image(alt))
-            assert.ok(await image(`${alt} (enlarged)`).isVisible(), `Could not find Enlarged ${alt} image`)
+            await section.image.assertVisible()
+            await section.cover.assertHidden()
+
+            await section.image.click()
+            await section.cover.assertVisible()
         })
 
         it('replacing the image', async () => {
