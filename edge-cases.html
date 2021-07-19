@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
 
     <title>img-popout Edge Cases</title>
-    <link rel="icon" href="data:," />
+    <link rel="icon" sizes="32x32" href="/icon.png" />
 
     <link href="style.css" rel="stylesheet" />
     <script defer src="edge-cases.js"></script>
@@ -25,7 +25,7 @@
         </code-demo>
         <code-demo title="Replacing the Image" id="replacing-the-image">
           <img-popout>
-            <img src="assets/fruit-small.png" alt="Original" class="to-replace" />
+            <img src="assets/fruit-small.png" alt="Replacing the Image" class="to-replace" />
           </img-popout>
           <div slot="additional">
             <p>Click the button below to replace the image.</p>
@@ -34,7 +34,7 @@
         </code-demo>
         <code-demo title="Changing the Image" id="changing-the-image">
           <img-popout>
-            <img src="assets/fruit-small.png" alt="Unchanged" />
+            <img src="assets/fruit-small.png" alt="Changing the Image" />
           </img-popout>
           <div slot="additional">
             <p>Click the button below to change the image.</p>
@@ -43,8 +43,8 @@
         </code-demo>
         <code-demo title="Multiple Images">
           <img-popout>
-            <img src="assets/fruit.png" alt="Multiple Large" />
-            <img src="assets/fruit-small.png" alt="Multiple Small" />
+            <img src="assets/fruit.png" alt="Multiple Images" />
+            <img src="assets/fruit-small.png" alt="Multiple Images (other)" />
           </img-popout>
           <div slot="additional">
             <p>When multiple images are used, only the first one will be mirrored into the popped out state.</p>

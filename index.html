@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
 
     <title>img-popout Examples</title>
-    <link rel="icon" href="data:," />
+    <link rel="icon" sizes="32x32" href="/icon.png" />
 
     <link href="style.css" rel="stylesheet" />
     <script defer src="index.js"></script>
@@ -18,13 +18,13 @@
       <artcle class="examples">
         <code-demo title="Standard Usage">
           <img-popout>
-            <img src="assets/fruit.png" alt="Fruit" />
+            <img src="assets/fruit.png" alt="Standard Usage" />
           </img-popout>
         </code-demo>
         <code-demo title="Different Images">
           <img-popout>
-            <img src="assets/fruit-small.png" alt="Fruit Small" />
-            <img slot="popped-out" src="assets/fruit.png" alt="Fruit Small (enlarged)" />
+            <img src="assets/fruit-small.png" alt="Different Images" />
+            <img slot="popped-out" src="assets/fruit.png" alt="Different Images (other)" />
           </img-popout>
         </code-demo>
         <code-demo title="Custom Background Color">
@@ -35,7 +35,7 @@
           </style>
 
           <img-popout class="custom-colors">
-            <img src="assets/fruit.png" alt="Fruit" />
+            <img src="assets/fruit.png" alt="Custom Background Color" />
           </img-popout>
         </code-demo>
         <code-demo title="Custom Transitions">
