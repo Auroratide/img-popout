@@ -88,14 +88,15 @@ describe('tests', function() {
         })
     
         it('custom transitions', async () => {
-            await click(image('Custom Transitions'))
-            assert.ok(await image('Custom Transitions (enlarged)').isVisible(), 'Could not find Enlarged Custom Transitions image')
-            
-            await click(image('Custom Transitions (enlarged)'))
-            assert.ok(await image('Custom Transitions (enlarged)').isVisible(), 'Enlarged Custom Transitions image should be fading out, but is gone')
-    
-            await waitFor(async () => !(await image('Custom Transitions (enlarged)').isVisible()))
-            assert.ok(!(await image('Custom Transitions (enlarged)').isVisible()), 'Enlarged Custom Transitions image should not be visible')
+            const section = new Section('Custom Transitions')
+
+            await section.image.click()
+            await section.cover.assertVisible()
+
+            await section.cover.click()
+            // Should be fading out first
+            await section.cover.assertVisible()
+            await section.cover.assertHidden()
         })
     })
 
