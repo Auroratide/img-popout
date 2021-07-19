@@ -10,7 +10,8 @@ const {
     click,
     press,
     waitFor,
-    focus,
+    $,
+    below,
 } = require('taiko')
 
 const assert = require('assert').strict
@@ -38,15 +39,16 @@ describe('tests', function() {
         })
 
         it('standard usage', async () => {
-            assert.ok(await image('Fruit').isVisible(), 'Could not find Fruit image')
-            assert.ok(!(await image('Fruit (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
-    
-            await click(image('Fruit'))
-            assert.ok(await image('Fruit (enlarged)').isVisible(), 'Could not find Enlarged Fruit image')
-    
-            await click(image('Fruit (enlarged)'))
-            await waitFor(async () => !(await image('Fruit (enlarged)').isVisible()))
-            assert.ok(!(await image('Fruit (enlarged)').isVisible()), 'Enlarged Fruit image should not be visible')
+            const section = new Section('Standard Usage')
+
+            await section.image.assertVisible()
+            await section.cover.assertHidden()
+
+            await section.image.click()
+            await section.cover.assertVisible()
+
+            await section.cover.click()
+            await section.cover.assertHidden()
         })
     
         it('different images', async () => {
@@ -155,3 +157,43 @@ describe('tests', function() {
         server.close()
     })
 })
+
+class Section {
+    constructor(name) {
+        this.name = name
+    }
+
+    get image() {
+        return new SectionElement(`${this.name} (image)`, image(below(this.name)))
+    }
+
+    get cover() {
+        // Accessing the cover element requires knowing a little about how the page is laid out
+        return new SectionElement(`${this.name} (cover)`, $((name) =>
+            document.querySelector(`code-demo[title="${name}"] img-popout`).shadowRoot.querySelector('#cover'),
+            { args: this.name }
+        ))
+    }
+}
+
+class SectionElement {
+    constructor(name, selector) {
+        this.name = name
+        this.selector = selector
+    }
+
+    async assertVisible() {
+        assert.ok(await this.selector.isVisible(), `Could not find '${this.name}'`)
+    }
+
+    async assertHidden() {
+        try {
+            await waitFor(async () => !(await this.selector.isVisible()))
+        } catch (e) {}
+        assert.ok(!(await this.selector.isVisible()), `'${this.name}' should not be visible`)
+    }
+
+    async click() {
+        await click(this.selector, { force: true })
+    }
+}
