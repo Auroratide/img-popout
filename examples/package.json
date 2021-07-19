@@ -1,6 +1,6 @@
 {
     "name": "@img-popout/examples",
-    "version": "0.3.1",
+    "version": "1.0.0",
     "private": true,
     "description": "Examples showcasing the img-popout component.",
     "main": "server.js",
