@@ -1,6 +1,6 @@
 {
     "name": "@auroratide/img-popout",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Component for viewing images in more detail.",
     "type": "module",
     "keywords": [
